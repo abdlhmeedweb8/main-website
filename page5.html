@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الروابط</title>
+    <link rel="icon" type="image/png" href="img.png">
+
+    <style>
+        /* إعدادات الخلفية بالتلون الأبيض المريح والأزرق الناعم */
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e6eef8 100%);
+            color: #2c3e50;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between; /* يضمن دفع الزر الأخير لنهاية الصفحة */
+            box-sizing: border-box;
+        }
+
+        /* حاوية تجمع العنوان والشبكة معاً في الأعلى */
+        .top-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            flex-grow: 1;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        /* عنوان الصفحة */
+        .page-title {
+            font-size: 1.8rem;
+            color: #1e3a8a;
+            margin-bottom: 30px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* شبكة المربعات الصغيرة */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        /* تصميم المربع الصغير والرابط بداخلها */
+        .link-card {
+            background-color: #ffffff;
+            border: 1px solid #d0e1fd;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* إعدادات الرابط (بدون خطوط تحتها) */
+        .link-card a {
+            display: block;
+            width: 100%;
+            padding: 20px 15px;
+            text-align: center;
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        /* تأثير الحركة والتفاعل عند تمرير الماوس */
+        .link-card:hover {
+            transform: translateY(-4px);
+            background-color: #2563eb;
+            border-color: #2563eb;
+            box-shadow: 0 8px 20px rgba(33, 150, 243, 0.25);
+        }
+
+        .link-card:hover a {
+            color: #ffffff;
+        }
+
+        /* تصميم زر الانتقال للصفحة الأخيرة المثبت في النهاية */
+        .next-btn {
+            background-color: #1e3a8a; /* أزرق فخم غامق */
+            color: #ffffff;
+            text-decoration: none; /* بدون خط تحت الكلام */
+            padding: 12px 40px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.2);
+            transition: all 0.3s ease;
+            margin-top: auto; /* يضمن ثباته أسفل الحاوية تماماً */
+        }
+
+        .next-btn:hover {
+            transform: translateY(-2px);
+            background-color: #2563eb; /* يفتح اللون عند التمرير */
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        /* ==========================================================================
+           كود الريسبونسف (Media Query) المخصص لشاشات الجوال
+           ========================================================================== */
+        @media (max-width: 480px) {
+            body {
+                padding: 30px 15px;
+            }
+
+            .links-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 0 10px;
+            }
+
+            .page-title {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+            
+            .link-card a {
+                padding: 18px 10px;
+                font-size: 1rem;
+            }
+
+            .next-btn {
+                width: 80%;
+                text-align: center;
+                box-sizing: border-box;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-content">
+        <h1 class="page-title">صفحة سبيشل 💙</h1>
+
+        <div class="links-grid">
+            <div class="link-card">
+                <a href="https://abdlhmeedweb8.github.io/mybabywebsite/" target="_blank">اولللل موقع</a>
+            </div>
+            <div class="link-card">
+                <a href="https://abdlhmeedweb8.github.io/happy-birthday-to-you-hoory/" target="_blank"> عيد ميلادك</a>
+            </div>
+            <div class="link-card">
+                <a href="https://abdlhmeedweb8.github.io/rori-srory/" target="_blank">هدية</a>
+            </div>
+        </div>
+    </div>
+
+    <a href="index.html" class="next-btn">العودة</a>
+
+</body>
+</html>

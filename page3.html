@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة الذكريات</title>
+    <link rel="icon" type="image/png" href="img.png">
+
+    <style>
+        /* إعدادات الخلفية بنفس لون الورقة البيج بالصورة تماماً وثبات الأبعاد */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #9a856c; /* نفس درجة البيج الدافئ من صورتك */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* الحاوية الرئيسية للعناصر في السنتر */
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 450px; /* العرض المثالي للصورة والمربع */
+            gap: 20px; /* المسافة بين الصورة والمربع والزر */
+        }
+
+        /* كود حاوية الصورة في النص بالضبط */
+        .image-box {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* ظل ناعم تحت الصورة */
+        }
+
+        /* المربع الصغير اللي تحت الصورة وفيه الجملة الحلوة */
+        .small-comment-box {
+            background-color: #cc9c6f; /* مربع أبيض ناعم ليبرز الجملة */
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            width: 85%; /* أصغر نتفة من عرض الصورة للتناسق */
+            box-sizing: border-box;
+        }
+
+        .sweet-sentence {
+            margin: 0;
+            color: black; /* لون خط بني دافئ متناسق مع البيج */
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        /* زر الانتقال للصفحة الرابعة */
+        .next-btn {
+            background-color: #cc9c6f; /* لون متناسق مع الخط والخلفية */
+            color: black;
+            text-decoration: none;
+            padding: 10px 35px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .next-btn:hover {
+            transform: translateY(-2px);
+            background-color: #b88d65;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        /* ريسبونسف للجوالات للتأكد من أن الأبعاد ممتازة دائماً */
+        @media (max-width: 480px) {
+            .main-container {
+                width: 95%;
+            }
+            .sweet-sentence {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        
+        <div class="image-box">
+            <img src="rory.png" alt="Memory">
+        </div>
+
+        <div class="small-comment-box">
+            <p class="sweet-sentence">تفتكري لمن كنا نقول الهدايا الهاند ميد؟ اعتبريها هدية هاند ميد و وصلتها مع المندوب الي اكلته انا اول  ❤️</p>
+        </div>
+
+        <a href="page4.html" class="next-btn">اللي بعده</a>
+
+    </div>
+
+</body>
+</html>

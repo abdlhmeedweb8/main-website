@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Special Night</title>
+    <link rel="icon" type="image/png" href="img.png">
+    <style>
+        /* إعدادات الخلفية الفلكية وثبات الصفحة الأساسي للابتوب */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #030611;
+            color: #ffffff;
+            font-family: 'Courier New', Courier, monospace;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden; /* يمنع السكرول باللابتوب */
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px 50px;
+            position: relative;
+        }
+
+        /* تأثير النجوم المتحركة والوميض في الخلفية */
+        body::before, body::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.3) 1.5px, transparent 30px),
+                radial-gradient(white, rgba(255,255,255,.2) 1px, transparent 20px);
+            background-size: 550px 550px, 350px 350px;
+            z-index: 0;
+            animation: starsMove 100s linear infinite;
+        }
+
+        body::after {
+            background-size: 400px 400px, 250px 250px;
+            animation: starsMove 150s linear infinite, twinkling 4s ease-in-out infinite alternate;
+            opacity: 0.7;
+        }
+
+        @keyframes starsMove {
+            from { transform: translate(0, 0); }
+            to { transform: translate(-50vw, -50vh); }
+        }
+
+        @keyframes twinkling {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        .top-center-section, .middle-main-layout, .bottom-section, .moon-btn-container, .left-message-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- القسم العلوي: الساوند ويف والمورس --- */
+        .top-center-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        .audio-wave-section {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80px;
+            position: relative;
+        }
+        .audio-wave-section::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            border-top: 2px dotted rgba(214, 143, 161, 0.4);
+            z-index: 1;
+        }
+        .wave-container {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            height: 80px;
+            z-index: 2;
+            background-color: #030611;
+            padding: 0 15px;
+        }
+        .bar {
+            width: 3px;
+            background-color: #d68fa1;
+            border-radius: 2px;
+        }
+        .b1 { height: 10px; } .b2 { height: 25px; } .b3 { height: 45px; }
+        .b4 { height: 65px; } .b5 { height: 40px; } .b6 { height: 60px; }
+        .b7 { height: 50px; } .b8 { height: 30px; } .b9 { height: 15px; }
+
+        .morse-code {
+            color: #d68fa1;
+            font-size: 20px;
+            letter-spacing: 8px;
+            margin-top: 15px;
+        }
+
+        /* --- القسم الأوسط --- */
+        .middle-main-layout {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            flex-grow: 1;
+            margin: 10px 0;
+        }
+
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 250px;
+        }
+        .star-map-circle {
+            width: 180px;
+            height: 180px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            position: relative;
+            margin-top: -250px;
+            margin-left: -2px;
+            background-color: #030611;
+        }
+        .star-map-circle::before {
+            content: "NORTH";
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 8px;
+            letter-spacing: 2px;
+            opacity: 0.7;
+        }
+        .inner-dots {
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            top: 10%;
+            left: 10%;
+            border: 1px dashed rgba(255,255,255,0.15);
+            border-radius: 50%;
+            background-image: radial-gradient(white 1px, transparent 1px);
+            background-size: 12px 12px;
+            opacity: 0.5;
+        }
+        .indicators-section {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-align: center;
+            opacity: 0.8;
+            margin-top: 70px;
+        }
+        .stars-scale .dots {
+            font-size: 14px;
+            letter-spacing: 4px;
+            margin-bottom: 3px;
+        }
+        .scale-labels {
+            display: flex;
+            justify-content: space-between;
+            width: 160px;
+            font-size: 8px;
+            opacity: 0.6;
+        }
+
+        .center-image-box {
+            max-width: 380px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 40px rgba(214, 143, 161, 0.2);
+            border-radius: 10px;
+            padding: 5px;
+        }
+        .center-image-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            width: 250px;
+        }
+        .constellations-scale {
+            text-align: center;
+            font-size: 10px;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
+        .star-sign-box {
+            text-align: center;
+            font-size: 11px;
+            letter-spacing: 2px;
+        }
+        .constellation-svg {
+            width: 100px;
+            height: 70px;
+            margin: 5px 0;
+        }
+        .moon-phases-section {
+            text-align: center;
+        }
+        .moons-row {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        /* --- القسم السفلي: يحتوي على تفاصيل الفوتر الفلكي فقط --- */
+        .bottom-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .footer-details {
+            text-align: center;
+            letter-spacing: 2px;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+        .name-title {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            letter-spacing: 4px;
+        }
+        .geo-info {
+            opacity: 0.7;
+        }
+
+        /* حاوية لتثبيت بوكس الكلام في الزاوية السفلى اليسار على شاشات اللابتوب */
+        .left-message-container {
+            position: absolute;
+            bottom: 20px;
+            left: 40px;
+            max-width: 320px;
+            background-color: rgba(244, 234, 225, 0.08); /* خلفية داكنة خفيفة متناسقة مع لون القمر */
+            border: 1px solid rgba(244, 234, 225, 0.2);
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            box-sizing: border-box;
+        }
+
+        .left-message-text {
+            margin: 0;
+            font-size: 0.8rem;
+            line-height: 1.6;
+            color: #f4eae1;
+            text-align: justify;
+            direction: rtl;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* خط ناعم ومريح لقراءة النص الطويل */
+        }
+
+        /* حاوية لتثبيت زر القمر في الزاوية السفلى اليمين على شاشات اللابتوب */
+        .moon-btn-container {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+        }
+
+        /* تصميم زر القمر الدائري */
+        .moon-button {
+            background-color: #f4eae1;
+            color: #030611;
+            text-decoration: none;
+            width: 95px;
+            height: 95px;
+            border-radius: 50%; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+            line-height: 1.3;
+            padding: 10px;
+            box-sizing: border-box;
+            box-shadow: 0 0 20px rgba(244, 234, 225, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .moon-button:hover {
+            transform: scale(1.08) rotate(15deg);
+            box-shadow: 0 0 30px rgba(244, 234, 225, 0.8);
+            background-color: #ffffff;
+        }
+
+        /* ==========================================================================
+           كود الريسبونسف (Media Query) المخصص لشاشات الجوال
+           ========================================================================== */
+        @media (max-width: 768px) {
+            body {
+                height: auto;
+                min-height: 100vh;
+                overflow-y: auto;
+                padding: 20px;
+                gap: 30px;
+            }
+
+            .middle-main-layout {
+                flex-direction: column;
+                gap: 40px;
+                margin: 10px 0;
+            }
+
+            .left-column, .right-column {
+                width: 100%;
+            }
+
+            .star-map-circle {
+                margin-top: 0;
+            }
+
+            .indicators-section {
+                margin-top: 20px;
+            }
+
+            .center-image-box {
+                max-width: 90%;
+                order: -1;
+            }
+            
+            .bottom-section {
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
+
+            /* في الجوال: ينزل بوكس الكلام بالمنتصف ليعطي مساحة قراءة ممتازة */
+            .left-message-container {
+                position: relative;
+                bottom: 0;
+                left: 0;
+                max-width: 90%;
+                margin: 10px auto;
+            }
+
+            /* في الجوال: يظهر زر القمر بالمنتصف في نهاية الشاشة تماماً */
+            .moon-btn-container {
+                position: relative;
+                bottom: 0;
+                right: 0;
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-center-section">
+        <div class="audio-wave-section">
+            <div class="wave-container">
+                <div class="bar b1"></div><div class="bar b2"></div><div class="bar b3"></div>
+                <div class="bar b4"></div><div class="bar b5"></div><div class="bar b6"></div>
+                <div class="bar b7"></div><div class="bar b8"></div><div class="bar b9"></div>
+                <div style="width: 10px;"></div>
+                <div class="bar b9"></div><div class="bar b8"></div><div class="bar b7"></div>
+                <div class="bar b6"></div><div class="bar b5"></div><div class="bar b4"></div>
+                <div class="bar b3"></div><div class="bar b2"></div><div class="bar b1"></div>
+            </div>
+        </div>
+        <div class="morse-code">••••  ——  •——•</div>
+    </div>
+
+    <div class="middle-main-layout">
+        
+        <div class="left-column">
+            <div class="star-map-circle">
+                <div class="inner-dots"></div>
+            </div>
+            
+            <div class="indicators-section">
+                <div class="stars-scale">
+                    <div>STARS</div>
+                    <div class="dots">•••••••••</div>
+                    <div class="scale-labels">
+                        <span>BRIGHTEST</span>
+                        <span>FAINTEST</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="center-image-box">
+            <img src="WhatsApp Image 2026-05-19 at 6.45.04 PM.jpeg" alt="Star Map">
+        </div>
+
+        <div class="right-column">
+            <div class="constellations-scale">
+                <svg width="100" height="15" viewBox="0 0 120 20">
+                    <polyline points="10,10 40,15 80,8 110,12" stroke="white" stroke-width="1.5" fill="none"/>
+                    <circle cx="10" cy="10" r="3.5" fill="white"/>
+                    <circle cx="40" cy="15" r="2.5" fill="white"/>
+                    <circle cx="80" cy="8" r="2.5" fill="white"/>
+                    <circle cx="110" cy="12" r="3.5" fill="white"/>
+                </svg>
+                <div style="margin: 5px 0;">ECLIPTIC</div>
+                <svg width="60" height="10">
+                    <path d="M 10,5 Q 30,12 50,5" stroke="white" stroke-width="1" fill="none" stroke-dasharray="2,2"/>
+                </svg>
+            </div>
+
+            <div class="star-sign-box">
+                <div style="opacity: 0.7;">STAR SIGN</div>
+                <svg class="constellation-svg" viewBox="0 0 100 80">
+                    <polyline points="50,15 20,40 40,65 50,15 80,40 40,65" stroke="white" stroke-width="1" fill="none" opacity="0.7"/>
+                    <circle cx="50" cy="15" r="3" fill="white"/>
+                    <circle cx="20" cy="40" r="3" fill="white"/>
+                    <circle cx="40" cy="65" r="3" fill="white"/>
+                    <circle cx="80" cy="40" r="3" fill="white"/>
+                </svg>
+                <div class="sign-name">LIBRA</div>
+            </div>
+
+            <div class="moon-phases-section">
+                <div style="opacity: 0.7; font-size: 10px; letter-spacing: 2px; margin-bottom: 5px;">MOON PHASES</div>
+                <div class="moons-row">
+                    <span style="opacity: 0.3;">🌑</span><span style="opacity: 0.5;">🌘</span>
+                    <span style="opacity: 0.7;">🌗</span><span style="opacity: 1;">🌖</span>
+                    <span style="opacity: 0.7;">🌕</span><span style="opacity: 0.5;">🌔</span>
+                </div>
+                <div style="font-size: 9px; opacity: 0.5; letter-spacing: 1px;">WANING CRESCENT</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="bottom-section">
+        <div class="footer-details">
+            <div class="name-title">KMEHA</div>
+            <div class="geo-info">
+                JEDDAH, SAUDI ARABIA<br>
+                18th OCTOBER 2025 AT 5:05 PM<br>
+                21.5292° N 39.1611° E
+            </div>
+        </div>
+    </div>
+
+    <div class="left-message-container">
+        <p class="left-message-text">
+            هذه الصفحة مرة مميزة، النجوم هذييييك الي على اليمين تشكل اول يوم عبرتي فيه من قلبك لي.. ال wave visual هذا الي فوق هو صوتك على شكل ويف فيجول. و كود مورس الي تحت الويف فيجول هذا اسمك (حور). والصورة الي في النص هذه شكل النجوم و المجرات في اليوم و الوقت الي عبرتي لي فيه من قلبك. و كلمة KMEHA معناها اهيمك. و انا فعلا اهيمك يا هيامي
+        </p>
+    </div>
+
+    <div class="moon-btn-container">
+        <a href="page3.html" class="moon-button">اضغطي على نفسك</a>
+    </div>
+
+</body>
+</html>
